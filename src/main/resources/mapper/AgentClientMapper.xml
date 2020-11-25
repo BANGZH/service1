@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cloud.service01.repository.AgentClientMapper">
+
+    <select id="selectClientByCondition" resultType="com.cloud.service01.domain.vo.ClientVO">
+        select
+            id,
+            client_name,
+            client_gender,
+            client_code,
+            client_city,
+            client_type,
+            agent_code,
+            agent_name
+        from
+            public_client
+        where
+            <if test="agentCode != null and agentCode !=''">
+                agent_code = #{agentCode}
+            </if>
+            <if test="clientName != null and clientName !=''">
+                and client_name like concat(#{clientName},'%')
+            </if>
+            <if test="clientType != null and clientType !=''">
+                and client_type = #{clientType}
+            </if>
+            <if test="clientType != null and clientType !=''">
+                and client_city = #{clientCity}
+            </if>
+        limit ${startRow} , ${pageSize}
+    </select>
+
+    <select id="countClientByCondition" resultType="java.lang.Integer">
+        select
+            count(id)
+        from
+            public_client
+        where
+            <if test="agentCode != null and agentCode !=''">
+                agent_code = #{agentCode}
+            </if>
+            <if test="clientName != null and clientName !=''">
+                and client_name like concat(#{clientName},'%')
+            </if>
+            <if test="clientType != null and clientType !=''">
+                and client_type = #{clientType}
+            </if>
+            <if test="clientType != null and clientType !=''">
+                and client_city = #{clientCity}
+            </if>
+
+
+    </select>
+
+    <select id="selectClientDistributionByCondition" resultType="java.util.Map">
+        select
+            count(id) as clientCount,
+            client_type as clientType
+        from
+            public_client
+        where
+            <if test="agentCode != null and agentCode !=''">
+                agent_code = #{agentCode}
+            </if>
+            <if test="clientName != null and clientName !=''">
+                and client_name like concat(#{clientName},'%')
+            </if>
+            <if test="clientType != null and clientType !=''">
+                and client_type = #{clientType}
+            </if>
+            <if test="clientType != null and clientType !=''">
+                and client_city = #{clientCity}
+            </if>
+        group by client_type
+    </select>
+
+
+</mapper>
