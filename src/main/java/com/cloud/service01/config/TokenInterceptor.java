@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
@@ -65,12 +64,12 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
      * @since  2019年4月6日
      */
     private void saveToken(HttpServletRequest request, String tokenKey) {
-        HttpSession session = request.getSession(false);
+        HttpSession session = request.getSession();
         Object tokenObj = session.getAttribute("tokenMap");
         Map<String, String> tokenMap = null;
         if (tokenObj == null) {
             // 如果tokenMap为空
-            tokenMap = new HashMap<String, String>();
+            tokenMap = new HashMap<>();
             tokenMap.put(tokenKey, UUID.randomUUID().toString());
             session.setAttribute("tokenMap", tokenMap);
         } else if (tokenObj instanceof Map) {
@@ -101,6 +100,11 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
                 for (Map.Entry<String, String> entry : tokenMap.entrySet()) {
                     if (clientToken.equals(entry.getValue())) {
                         tokenKey = entry.getKey();
+                        // 刷新
+                        // 如果tokenMap为空
+                        tokenMap.put(tokenKey, UUID.randomUUID().toString());
+                        session.setAttribute("tokenMap", tokenMap);
+                        request.setAttribute("token", tokenMap.get(tokenKey));
                         break;
                     }
                 }
