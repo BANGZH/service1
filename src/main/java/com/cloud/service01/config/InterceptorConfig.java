@@ -7,27 +7,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 @Configuration
 public class InterceptorConfig extends WebMvcConfigurationSupport {
     /**
-     * 静态资源配置
-     */
-    /*@Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/img/**")
-                .addResourceLocations("classpath:/imgs/");
-
-        super.addResourceHandlers(registry);
-    }*/
-
-    /**
-     * 默认首页配置
-     */
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/").setViewName("forward:/index");
-//        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
-//        super.addViewControllers(registry);
-//    }
-
-    /**
      * interceptor配置
      */
     @Override
