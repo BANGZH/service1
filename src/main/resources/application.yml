@@ -30,3 +30,37 @@ spring:
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
+
+weixin:
+  posterapp:
+    agentId: dasjd
+    secret: dsad
+  work:
+    corpid: aa
+    agentid: ss
+    corpsecret: ddd
+    minisecret: ss
+    contactsecret: dsd
+    aes-key: sss
+    api-prefix: https://qyapi.weixin.qq.com/cgi-bin/
+    api:
+      token: gettoken
+      dept-list: department/list
+      dept-create: department/create
+      user-list: user/list
+      user-create: user/create
+      user-update: user/update
+      user-get: user/get
+      tag-list: tag/list
+      tag-create: tag/create
+      tag-update: tag/update
+      tag-delete: tag/delete
+      tag-member: tag/get
+      tag-join: tag/addtagusers
+      tag-remove: tag/deltagusers
+      message-send: message/send
+      mini-code2session: miniprogram/jscode2session
+  web-authorize-url: https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect
+  get-user-info-api: https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token={0}&code={1}
+  get-js-ticket-api: https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token={0}
+  poster-address: www.google.com
