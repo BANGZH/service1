@@ -57,14 +57,14 @@ public class RightModuleService {
     /**
      * 更新父模块
      */
-    public void updateModule() {
+    public void updateModule(RightModule rightModule,String operator) {
 
     }
 
     /**
      * 更新子模块
      */
-    public void updateChildModule() {
+    public void updateChildModule(RightChildModule rightChildModule,String operator) {
 
     }
 

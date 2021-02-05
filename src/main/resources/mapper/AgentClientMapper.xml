@@ -27,6 +27,9 @@
             <if test="clientType != null and clientType !=''">
                 and client_city = #{clientCity}
             </if>
+        ORDER BY
+            client_type DESC,
+            client_name ASC
         limit ${startRow} , ${pageSize}
     </select>
 
@@ -48,8 +51,6 @@
             <if test="clientType != null and clientType !=''">
                 and client_city = #{clientCity}
             </if>
-
-
     </select>
 
     <select id="selectClientDistributionByCondition" resultType="java.util.Map">
@@ -57,7 +58,7 @@
             count(id) as clientCount,
             client_type as clientType
         from
-            public_client
+            agent_client
         where
             <if test="agentCode != null and agentCode !=''">
                 agent_code = #{agentCode}

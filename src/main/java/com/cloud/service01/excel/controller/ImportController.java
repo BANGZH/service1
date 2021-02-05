@@ -1,6 +1,6 @@
 package com.cloud.service01.excel.controller;
 
-import com.cloud.service01.excel.domain.entity.ResponseDTO;
+import com.cloud.service01.domain.dto.ResponseDTO;
 import com.cloud.service01.service.ImportService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

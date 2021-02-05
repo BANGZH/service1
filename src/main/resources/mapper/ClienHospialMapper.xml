@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cloud.service01.hospital.repository.ClientHospitalMapper">
+
+    <select id="selectHospitalCity" resultType="java.lang.String">
+        SELECT
+            hospital_city
+        FROM
+            client_hospital_config
+        GROUP BY
+            hospital_city
+    </select>
+
+</mapper>

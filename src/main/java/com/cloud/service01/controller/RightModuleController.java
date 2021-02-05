@@ -1,11 +1,10 @@
 package com.cloud.service01.controller;
 
 import com.cloud.service01.config.Token;
+import com.cloud.service01.domain.entity.RightChildModule;
+import com.cloud.service01.domain.entity.RightModule;
 import com.cloud.service01.service.RightModuleService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ClassName RightModuleConroller
@@ -21,6 +20,21 @@ public class RightModuleController {
 
     public RightModuleController(RightModuleService rightModuleService) {
         this.rightModuleService = rightModuleService;
+    }
+
+    @PostMapping("/add")
+    public void insertModule(@RequestBody RightModule rightModule) {
+        rightModuleService.addModule(rightModule,"dddd");
+    }
+
+    @PostMapping("/update")
+    public void updateModule(@RequestBody RightModule rightModule) {
+        rightModuleService.updateModule(rightModule,"dddd");
+    }
+
+    @PostMapping("/child/add")
+    public void insertChildModule(@RequestBody RightChildModule rightModule) {
+        rightModuleService.addChildModule(rightModule,"dddd");
     }
 
     @PostMapping("/delete")
